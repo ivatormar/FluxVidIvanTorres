@@ -4,7 +4,7 @@
     <div>Alias: {{ $character['alias'] }}</div>
     @endisset
     <div> Pelicula: {{ $character['movie'] }}</div>
-    @isset()
+    @isset($character['age'])
     <div>Edad: {{ $character['age'] }}</div>
     @endisset
     <div>Especies: {{ $character['species'] }}</div>
