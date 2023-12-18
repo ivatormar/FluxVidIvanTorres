@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\movieController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,20 +14,20 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return ('Hola soy Ivan Torres bienvenido a Fluxvid');
+    return view ('index');
 })->name('index');
 Route::get('date', function () {
     return date('Y-m-d');
 });
 
-Route::get('/movies', function () {
-    return ('Listado de películas de FluxVid');
-})->name('movieList');
+// Route::get('/movies', function () {
+//     return view ('movies.index');
+// })->name('movieList');
 
-Route::get('/movies/{id}', function ($id) {
-    return ('Esta es la pelicula: '.$id);
-})
-->whereNumber('id')->name('movieId');
+// Route::get('/movies/{id}', function ($id) {
+//     return view ('movies.show',compact('id'));
+// })
+// ->whereNumber('id')->name('movieId');
 
 Route::get('characters', function () {
     $characters = [
@@ -42,3 +42,6 @@ Route::get('characters', function () {
     ];
     return view('characters.characters', compact('characters'));
 });
+
+
+Route::resource('movies',movieController::class)->except(['store','update','destroy']);
