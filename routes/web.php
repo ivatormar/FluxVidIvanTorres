@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\movieController;
+use App\Http\Controllers\directorController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -45,3 +47,5 @@ Route::get('characters', function () {
 
 
 Route::resource('movies',movieController::class)->except(['store','update','destroy']);
+
+Route::resource('directors',directorController::class)->except(['store','update','destroy']);
