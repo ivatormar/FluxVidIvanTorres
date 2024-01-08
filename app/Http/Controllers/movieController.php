@@ -13,7 +13,7 @@ class movieController extends Controller
     public function index()
     {
 
-        $movies = Movie::paginate(6);
+        $movies = Movie::where('visibility',true)->paginate(6);
         return view ('movies.index',compact('movies'));
     }
 

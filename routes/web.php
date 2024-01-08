@@ -45,7 +45,11 @@ Route::get('characters', function () {
     return view('characters.characters', compact('characters'));
 });
 
+Route::resource('directors',directorController::class);
+Route::get('/directors/nationality/{country}', [DirectorController::class, 'getDirectorsFromNationality'])->name('directors.nationality');
 
-Route::resource('movies',movieController::class)->except(['store','update','destroy']);
+Route::resource('movies',movieController::class);
 
-Route::resource('directors',directorController::class)->except(['store','update','destroy']);
+
+
+
