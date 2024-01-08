@@ -17,7 +17,7 @@ return new class extends Migration
             $table->integer('year');
             $table->text('plot');
             $table->float('rating',2,1);
-            $table->boolean('visiblity');
+            $table->boolean('visibility');
             $table->timestamps();
         });
     }
