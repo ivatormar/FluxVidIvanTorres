@@ -1,6 +1,18 @@
 @extends('layout')
 
 @section('content')
-<h1>Ficha de la pelicula: {{$id}} </h1>
-<h2><a href="{{route('movies.edit',$id)}}">Editar pelicula</a></h2>
+    <h1>Ficha de la pelicula: {{ $movie->title }} </h1>
+    <h2>Año: {{ $movie->year }}</h2>
+    <h2>Rating: {{ $movie->rating }}</h2>
+
+    <div>
+        <h2>Plot:</h2>
+        <p> {{ $movie->plot }}</p>
+    </div>
+    <h2><a href="{{ route('movies.edit', ['movie' => $movie->id]) }}">Editar pelicula</a></h2>
+    <form action="{{route('movies.destroy',['movie'=>$movie->id])}}" method="post">
+        @csrf
+        @method('delete')
+        <input type="submit" value="Eliminar">
+    </form>
 @endsection

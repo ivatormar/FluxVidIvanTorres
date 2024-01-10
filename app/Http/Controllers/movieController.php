@@ -38,7 +38,11 @@ class movieController extends Controller
      */
     public function show(string $id)
     {
-        return view ('movies.show', compact ('id'));
+        $movie= Movie::findOrFail($id);
+        if($movie->visibility==0){
+            return redirect()->route('movies.index');
+        }
+        return view ('movies.show', compact ('movie'));
     }
 
     /**
@@ -62,6 +66,7 @@ class movieController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        Movie::findOrFail($id)->delete();
+        return redirect()->route('movies.index');
     }
 }
