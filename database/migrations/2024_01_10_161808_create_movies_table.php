@@ -19,6 +19,8 @@ return new class extends Migration
             $table->float('rating',2,1);
             $table->boolean('visibility');
             $table->timestamps();
+            $table->foreignId('director_id')->constrained();
+
         });
     }
 
@@ -27,6 +29,9 @@ return new class extends Migration
      */
     public function down(): void
     {
+        Schema::table('movies', function (Blueprint $table) {
+            $table->dropColumn('director_id');
+        });
         Schema::dropIfExists('movies');
     }
 };

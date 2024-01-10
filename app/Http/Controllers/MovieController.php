@@ -5,16 +5,15 @@ namespace App\Http\Controllers;
 use App\Models\Movie;
 use Illuminate\Http\Request;
 
-class movieController extends Controller
+class MovieController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-
-        $movies = Movie::where('visibility',true)->paginate(6);
-        return view ('movies.index',compact('movies'));
+        $movies = Movie::where('visibility', true)->paginate(6);
+        return view('movies.index', compact('movies'));
     }
 
     /**
@@ -22,7 +21,7 @@ class movieController extends Controller
      */
     public function create()
     {
-        return view ('movies.create');
+        //
     }
 
     /**
@@ -36,27 +35,26 @@ class movieController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Movie $movie)
     {
-        $movie= Movie::findOrFail($id);
-        if($movie->visibility==0){
+        if ($movie->visibility == 0) {
             return redirect()->route('movies.index');
         }
-        return view ('movies.show', compact ('movie'));
+        return view('movies.show', compact('movie'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Movie $movie)
     {
-        return view ('movies.edit', compact ('id'));
+        return view('movies.edit', compact('movie'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Movie $movie)
     {
         //
     }
@@ -64,9 +62,8 @@ class movieController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Movie $movie)
     {
-        Movie::findOrFail($id)->delete();
         return redirect()->route('movies.index');
     }
 }

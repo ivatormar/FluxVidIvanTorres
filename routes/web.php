@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\movieController;
+use App\Http\Controllers\MovieController;
 use App\Http\Controllers\directorController;
 
 /*
@@ -16,7 +16,7 @@ use App\Http\Controllers\directorController;
 */
 
 Route::get('/', function () {
-    return view ('index');
+    return view('index');
 })->name('index');
 Route::get('date', function () {
     return date('Y-m-d');
@@ -45,11 +45,7 @@ Route::get('characters', function () {
     return view('characters.characters', compact('characters'));
 });
 
-Route::resource('directors',directorController::class);
+Route::resource('directors', directorController::class);
 Route::get('/directors/nationality/{country}', [DirectorController::class, 'getDirectorsFromNationality'])->name('directors.nationality');
 
-Route::resource('movies',movieController::class);
-
-
-
-
+Route::resource('movies', MovieController::class);
