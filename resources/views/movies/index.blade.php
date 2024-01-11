@@ -3,7 +3,7 @@
     <h1>Movie List</h1>
     <ul>
         @foreach ($movies as $movie)
-            <li><a href="{{ route('movies.show', $movie->id) }}">{{ $movie->title }}</a></li>
+            <li><a href="{{ route('movies.show', $movie->id) }}">{{ $movie->title }}</a> - <a href="{{ route('directors.show', $movie->director) }}"> {{$movie->director->name}}</a></li>
         @endforeach
     </ul>
 

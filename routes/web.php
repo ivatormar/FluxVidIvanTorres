@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MovieController;
-use App\Http\Controllers\directorController;
+use App\Http\Controllers\DirectorController;
 
 /*
 |--------------------------------------------------------------------------
@@ -45,7 +45,8 @@ Route::get('characters', function () {
     return view('characters.characters', compact('characters'));
 });
 
-Route::resource('directors', directorController::class);
+Route::resource('directors', DirectorController::class);
 Route::get('/directors/nationality/{country}', [DirectorController::class, 'getDirectorsFromNationality'])->name('directors.nationality');
+
 
 Route::resource('movies', MovieController::class);
