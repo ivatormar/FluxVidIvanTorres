@@ -9,7 +9,8 @@ class Director extends Model
 {
     use HasFactory;
 
-    public function movies(){
+    public function movies()
+    {
         return $this->hasMany(Movie::class);
     }
 }

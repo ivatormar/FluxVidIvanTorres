@@ -9,7 +9,8 @@ class Movie extends Model
 {
     use HasFactory;
 
-    public function director(){
+    public function director()
+    {
         return $this->belongsTo(Director::class);
     }
 }
