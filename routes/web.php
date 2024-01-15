@@ -3,6 +3,9 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MovieController;
 use App\Http\Controllers\DirectorController;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -49,4 +52,6 @@ Route::resource('directors', DirectorController::class);
 Route::get('/directors/nationality/{country}', [DirectorController::class, 'getDirectorsFromNationality'])->name('directors.nationality');
 
 
-Route::resource('movies', MovieController::class);
+Route::resource('movies', MovieController::class)->parameters(['movie' => 'slug'])->missing(function (Request $request) {
+    return Redirect::route('movies.index');
+});

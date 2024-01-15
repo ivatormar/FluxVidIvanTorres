@@ -9,8 +9,8 @@
         <h2>Plot:</h2>
         <p> {{ $movie->plot }}</p>
     </div>
-    <h2><a href="{{ route('movies.edit', ['movie' => $movie->id]) }}">Editar pelicula</a></h2>
-    <form action="{{route('movies.destroy',['movie'=>$movie->id])}}" method="post">
+    <h2><a href="{{ route('movies.edit', ['movie' => $movie->slug]) }}">Editar pelicula</a></h2>
+    <form action="{{route('movies.destroy',['movie'=>$movie->slug])}}" method="post">
         @csrf
         @method('delete')
         <input type="submit" value="Eliminar">

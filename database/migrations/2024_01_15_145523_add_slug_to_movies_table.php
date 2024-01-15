@@ -11,12 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('directors', function (Blueprint $table) {
-            $table->id()->autoIncrement();
-            $table->string('name',40);
-            $table->date('birthday');
-            $table->string('nationality',30);
-            $table->timestamps();
+
+        Schema::table('movies', function (BluePrint $table) {
+            $table->string('slug')->nullable()->unique()->after('title');
         });
     }
 
@@ -25,6 +22,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('directors');
+        Schema::table('movies', function (Blueprint $table) {
+            $table->dropColumn('slug');
+        });
     }
 };
