@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\MovieRequest;
+use App\Http\Requests\MovieUpdateRequest;
 use App\Models\Movie;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -69,7 +70,7 @@ class MovieController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(MovieRequest $request, Movie $movie)
+    public function update(MovieUpdateRequest $request, Movie $movie)
     {
 
         $movie->title = $request->get('title');

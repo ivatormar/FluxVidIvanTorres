@@ -52,6 +52,7 @@ Route::resource('directors', DirectorController::class);
 Route::get('/directors/nationality/{country}', [DirectorController::class, 'getDirectorsFromNationality'])->name('directors.nationality');
 
 
+Route::put('/movies/{movie}', 'MovieController@update');
 Route::resource('movies', MovieController::class)->parameters(['movie' => 'slug'])->missing(function (Request $request) {
     return Redirect::route('movies.index');
 });
