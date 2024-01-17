@@ -43,8 +43,8 @@
 
         <br>
         <label for="visibility">Visible:</label>
-        <input type="checkbox" name="visibility" id="visibility" value="{{ old('visibility') }}">
-        
+        <input type="checkbox" name="visibility" id="visibility" {{ old('visibility')== true?'checked':'' }}>
+
 
         <select name="director" id="director" value="{{ old('rating') }}">
 
