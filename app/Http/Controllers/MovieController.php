@@ -50,12 +50,13 @@ class MovieController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Movie $movie)
+    public function show(Request $request, Movie $movie)
     {
         if ($movie->visibility == 0) {
-            return redirect()->route('movies.index');
+            abort(404);
         }
-        return view('movies.show', compact('movie'));
+        $message = $request->get('message');
+        return view('movies.show', compact('movie', 'message'));
     }
 
     /**
@@ -82,7 +83,8 @@ class MovieController extends Controller
         $movie->director()->associate(Director::findOrfail($request->get('director')));
         $movie->save();
 
-        return view('movies.edited', compact('movie'));
+        return redirect()->route('movies.show', ['movie' => $movie, 'message' => 'Pelicula actualizada']);
+
     }
 
     /**

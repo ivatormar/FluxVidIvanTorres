@@ -63,10 +63,11 @@ class DirectorController extends Controller
     {
         return redirect()->route('directors.index');
     }
-    public function getDirectorsFromNationality($country)
+    public function getDirectorsFromNationality(Request $request)
     {
+        $country=$request->get('country');
         $directors = Director::where('nationality', $country)->get();
         return view('directors.nationality', compact('country', 'directors'));
     }
-    
+
 }

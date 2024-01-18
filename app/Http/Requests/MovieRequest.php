@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Requests;
-
+use Illuminate\Validation\Rule;
 use Illuminate\Foundation\Http\FormRequest;
 
 class MovieRequest extends FormRequest
@@ -21,13 +21,36 @@ class MovieRequest extends FormRequest
      */
     public function rules(): array
     {
-        return [
-            'title' => 'required|min:8|max:40|unique',
-            'year' => 'required|integer|digits:4|gte:1920',
-            'plot' => 'required|min:20|max:300',
-            'rating' => 'required|numeric|between:0,5',
-            'director' => 'numeric',
-        ];
+        // switch($this->method()){
+        //     case 'POST':
+        //         $rules['title']='required|unique:movies';
+        //         break;
+        //         case 'PUT':
+        //             $rules['title']=['required',Rule::unique('movies')->ignore($this->movie->id)];
+        //             break;
+        // }
+        //     $rules[year] => 'required|integer|digits:4|gte:1920';
+        //     $rules[plot] => 'required|min:20|max:300';
+        //     $rules[rating] => 'required|numeric|between:0,5';
+        //     $rules[director] => 'numeric';
+
+        //     return $rules;
+
+            //POST se utiliza para nuevas peliculas, PUT para editar peliculas
+        switch ($this->method()) {
+            case 'POST':
+                $rules['title'] = 'required|min:3|max:50|unique:movies,title';
+                break;
+            case 'PUT':
+                $rules['title'] = ['required', Rule::unique('movies')->ignore($this->movie->id), 'min:3', 'max:50'];
+                break;
+        }
+        $rules['year'] = 'required|integer|digits:4|gte:1920';
+        $rules['plot'] = 'required|max:256';
+        $rules['rating'] = 'required|numeric|between:0,5.0|decimal:0,1';
+        $rules['director'] = 'numeric';
+
+        return $rules;
     }
 
     public function messages()
