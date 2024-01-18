@@ -7,7 +7,7 @@
         @method('put')
 
         <label for="title">Title</label>
-        <input type="text" name="title" id="title" value="{{ $movie->title }}">
+        <input type="text" name="title" id="title" value="{{ old('title')?old('title'):$movie->title }}">
         @error('title')
             <br> Error:{{ $message }}
         @enderror
@@ -27,14 +27,14 @@
 
         <br>
         <label for="plot">Argumento</label>
-        <textarea type="text" name="plot" id="plot" cols="30" rows="10">{{ $movie->plot }}</textarea>
+        <textarea type="text" name="plot" id="plot" cols="30" rows="10">{{ old('plot') ? old('plot') : $movie->plot }}</textarea>
         @error('plot')
             <br> Error:{{ $message }}
         @enderror
         <br>
         <br>
         <label for="rating">Puntuacion (de 0 a 5 con un decimal):</label>
-        <input type="text" name="rating" id="rating" value="{{ $movie->rating }}">
+        <input type="text" name="rating" id="rating" value="{{ old(rating) ? old(rating) : $movie->rating }}">
         @error('rating')
             Error:{{ $message }}
         @enderror
