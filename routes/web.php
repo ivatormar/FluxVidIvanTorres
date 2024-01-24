@@ -3,8 +3,10 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MovieController;
 use App\Http\Controllers\DirectorController;
+use App\Http\Controllers\LoginController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
+use App\Http\Controllers\UserProfileController;
 
 
 /*
@@ -56,4 +58,16 @@ Route::put('/movies/{movie}', 'MovieController@update');
 Route::resource('movies', MovieController::class)->parameters(['movie' => 'slug'])->missing(function (Request $request) {
     return Redirect::route('movies.index');
 });
+
+Route::get('signup',[LoginController::class,'signupForm'])->name('signupForm');
+Route::post('signup',[LoginController::class,'signup'])->name('signup');
+Route::get('login',[LoginController::class,'loginForm'])->name('loginForm');
+Route::post('login',[LoginController::class,'login'])->name('login');
+Route::get('logout',[LoginController::class,'logout'])->name('logout');
+Route::get('profile',function(){
+    return view('users.profile');
+})->name('users.profile')->middleware('auth');
+
+Route::get('/users/profile', [UserProfileController::class, 'show'])->name('users.profile')->middleware('auth');
+
 

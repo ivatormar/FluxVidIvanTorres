@@ -3,6 +3,9 @@
     <a href="{{ route('movies.index') }}">Movie list</a>
     <a href="{{ route('movies.create') }}">New Movie</a>
     <a href="{{ route('directors.index') }}">Directors Index</a>
+    <a href="{{ route('signupForm') }}">Register</a>
+    <a href="{{ route('loginForm') }}">Login</a>
+
     <form action="/directors/nationality/" method="POST">
         @csrf
         <select name="country">
