@@ -7,6 +7,7 @@ use App\Http\Controllers\LoginController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use App\Http\Controllers\UserProfileController;
+use App\Http\Controllers\AdminUserController;
 
 
 /*
@@ -69,5 +70,6 @@ Route::get('profile',function(){
 })->name('users.profile')->middleware('auth');
 
 Route::get('/users/profile', [UserProfileController::class, 'show'])->name('users.profile')->middleware('auth');
+
 
 

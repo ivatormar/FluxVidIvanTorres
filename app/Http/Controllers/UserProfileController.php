@@ -7,10 +7,7 @@ use Illuminate\Http\Request;
 
 class UserProfileController extends Controller
 {
-    public function showProfile(User $user)
-{
-    return view('users.profile', compact('user'));
-}
+
 
 public function show()
 {
