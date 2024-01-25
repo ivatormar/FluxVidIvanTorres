@@ -1,4 +1,6 @@
 @extends('layout')
+@section('title', 'Profile')
+
 
 @section('content')
     <h1>Perfil de Usuario</h1>

@@ -1,3 +1,5 @@
+@extends('layout')
+@section('content')
 <form action="{{route('login')}}" method="post">
 
 @csrf
@@ -13,3 +15,4 @@
 <input type="submit" value="Enviar">
 
 </form>
+@endsection

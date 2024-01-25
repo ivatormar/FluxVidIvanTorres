@@ -10,6 +10,7 @@ use App\Http\Controllers\UserProfileController;
 use App\Http\Controllers\AdminUserController;
 
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -70,6 +71,14 @@ Route::get('profile',function(){
 })->name('users.profile')->middleware('auth');
 
 Route::get('/users/profile', [UserProfileController::class, 'show'])->name('users.profile')->middleware('auth');
+
+
+
+Route::middleware(['auth', 'admin'])->group(function () {
+    Route::get('/admin/users', [AdminUserController::class, 'index'])->name('admin.users.index');
+    Route::delete('/admin/users/{user}', [AdminUserController::class, 'destroy'])->name('admin.users.destroy');
+    Route::get('/admin/allUsers', [AdminUserController::class, 'index'])->name('admins.allUsers'); // Si añado una S a admins falla por el midlleware, porque esta puesto para admin no admins
+});
 
 
 

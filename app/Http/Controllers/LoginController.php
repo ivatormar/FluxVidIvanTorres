@@ -22,7 +22,7 @@ class LoginController extends Controller
         $user->birthDate=$request->get('birthDate');
         $user->email=$request->get('email');
         $user->password=Hash::make($request->get('password'));
-        $user->assignRole('user');
+        $user->rol=('user');
 
         $user->save();
 

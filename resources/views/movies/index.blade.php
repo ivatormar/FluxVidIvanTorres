@@ -1,4 +1,6 @@
 @extends('layout')
+@section('title', 'Movie list')
+
 @section('content')
     <h1>Movie List</h1>
     <ul>

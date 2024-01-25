@@ -1,6 +1,5 @@
 
-
-@extends('layouts.app')  {{-- Asumiendo que tienes un layout --}}
+@extends('layouts.app')
 
 @section('content')
     <form action="{{ route('mostrar-directores', ['country' => '']) }}" method="GET">

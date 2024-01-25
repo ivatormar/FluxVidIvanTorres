@@ -1,4 +1,5 @@
 @extends('layout')
+@section('title', 'Modificar película')
 
 @section('content')
     <br>

@@ -1,4 +1,5 @@
 @extends('layout')
+@section('title', 'Ficha pelicula')
 
 @section('content')
     <h1>Ficha de la pelicula: {{ $movie->title }} </h1>

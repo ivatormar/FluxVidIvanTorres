@@ -9,11 +9,11 @@ class AdminUserController extends Controller
 {
     public function index(){
         $users=User::all();
-        return view('admin.users.index',compact('users'));
+        return view('admins.allUsers',compact('users'));
     }
     public function destroy (User $user){
         $user->delete();
-        return redirect()->route('admin.users.index')->with('succes','Usuario eliminado correctamente.');
+        return redirect()->route('admins.allUsers');
     }
 
 }
