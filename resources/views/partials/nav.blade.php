@@ -4,6 +4,7 @@
     <a href="{{ route('movies.create') }}">New Movie</a>
     <a href="{{ route('directors.index') }}">Directors Index</a>
     @auth
+
         <a href="{{ route('users.profile') }}">Profile</a>
         @if (auth()->user()->rol === 'admin')
             <a href="{{ route('admins.allUsers') }}">All Users</a>

@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use App\Models\Director;
 
+
 class MovieController extends Controller
 {
     /**
@@ -16,7 +17,8 @@ class MovieController extends Controller
      */
     public function index()
     {
-        $movies = Movie::where('visibility', true)->paginate(6);
+
+        $movies = Movie::paginate(6);
         return view('movies.index', compact('movies'));
     }
 
