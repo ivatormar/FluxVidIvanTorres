@@ -47,8 +47,9 @@ class LoginController extends Controller
             $request->session()->regenerate();
             return redirect()->route('users.profile');
         }else{
-            $error='Error al acceder a la aplicación';
-            return view ('auth.login',compact('error'));
+
+            $error = 'Credenciales incorrectas. Por favor, verifica tu nombre de usuario y contraseña.';
+        return redirect()->route('login')->withErrors([$error]);
         }
     }
 

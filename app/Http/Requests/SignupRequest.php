@@ -23,11 +23,11 @@ class SignupRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'username' => ['required', 'string', 'min:5', 'max:20'],
+            'username' => ['required', 'string', 'min:5', 'max:20','unique:users'],
             'name' => ['required', 'string', 'min:2', 'max:255'],
             'email' => ['required', 'string', 'min:10', 'max:255'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
-            
+
 
         ];
     }
@@ -39,6 +39,8 @@ class SignupRequest extends FormRequest
             'username.string' => 'El nombre de usuario debe ser una cadena de texto.',
             'username.min' => 'El nombre de usuario debe tener al menos :min caracteres.',
             'username.max' => 'El nombre de usuario no puede tener más de :max caracteres.',
+            'username.unique' => 'El nombre de usuario ya existe.',
+
 
             'name.required' => 'El campo de nombre es obligatorio.',
             'name.string' => 'El nombre debe ser una cadena de texto.',
